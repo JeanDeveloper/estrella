@@ -1,3 +1,4 @@
+import 'package:delivery/presentation/screen/home/home_screen.dart';
 import 'package:delivery/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,15 +33,14 @@ class LoginScreen extends StatelessWidget {
                       ),
 
                       gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                         colors: deliveryGradients,
-                        stops: [
+                        stops: const [
                           0.5,
                           1.0
                         ]
                       ),
-
 
                     ),
                     
@@ -50,11 +50,13 @@ class LoginScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).canvasColor,
                     radius: 50,
                     child: Padding(
                       padding: const EdgeInsets.all(8),
-                      child: SvgPicture.asset("assets/delivery_splash.svg"),
+                      child: SvgPicture.asset(
+                        "assets/delivery_splash.svg",
+                      ),
                     ) ,
                   )
                 )
@@ -67,9 +69,9 @@ class LoginScreen extends StatelessWidget {
           //FORM
           Expanded(
             flex: 4,
-            child: Container(
-              color: Colors.white,
-              child: SingleChildScrollView(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
                     SizedBox(height: size.height * .05),
@@ -87,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold
                       )
                     ),
+                    SizedBox(height: size.height * .01),
                     TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(
@@ -103,10 +106,11 @@ class LoginScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold
                       )
                     ),
+                    SizedBox(height: size.height * .01),
                     TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(
-                          Icons.person_outline,
+                          Icons.lock_outline_rounded,
                           color: Theme.of(context).iconTheme.color,
                         ),
                         hintText: "Contraseña"
@@ -116,7 +120,6 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            
             ),
 
           ),
@@ -124,29 +127,39 @@ class LoginScreen extends StatelessWidget {
           //BUTTON
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                height: size.height * .001,
-
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerRight,
-                    end: Alignment.centerLeft,
-                    colors: deliveryGradients,
-
+              padding: const EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+          
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: ( _ ) => HomeScreen(), 
+                    )
+                  );
+                },  
+                child: Container(
+                  alignment: Alignment.center,
+                  height: size.height * .001,
+          
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerRight,
+                      end: Alignment.centerLeft,
+                      colors: deliveryGradients,
+                    ),
+                    borderRadius: BorderRadius.circular(10)
                   ),
-                  borderRadius: BorderRadius.circular(10)
-                ),
-
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Ingresar", 
-                    style: TextStyle( color: Colors.white ),
-                      textAlign: TextAlign.center,
+              
+                  child: const Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Text(
+                      "Ingresar", 
+                      style: TextStyle( color: Colors.white ),
+                        textAlign: TextAlign.center,
+                    ),
                   ),
+          
                 ),
-
               ),
             ),
           ),
