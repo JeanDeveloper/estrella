@@ -10,108 +10,102 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final _borderLight = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(
+        color: DeliveryColors.lightGrey,
+        width: 2,
+        style: BorderStyle.solid
+      )
+    );
 
+    final _borderDark = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(
+        color: DeliveryColors.grey,
+        // width: 2,
+        style: BorderStyle.solid
+      )
+    );
 
-final _borderLight = OutlineInputBorder(
+    final lightTheme = ThemeData(
+      appBarTheme: AppBarTheme(
+        color: DeliveryColors.white,
 
-  borderRadius: BorderRadius.circular(5),
-  borderSide: BorderSide(
-    color: DeliveryColors.lightGrey,
-    width: 2,
-    style: BorderStyle.solid
-  )
+        titleTextStyle: GoogleFonts.poppins().copyWith(
+          color: DeliveryColors.purple, 
+          fontWeight: FontWeight.bold,
+          fontSize: 18
+        )
 
-);
+      ),
 
-final _borderDark = OutlineInputBorder(
+      canvasColor: DeliveryColors.white,
+      disabledColor: DeliveryColors.grey,
 
-  borderRadius: BorderRadius.circular(5),
-  borderSide: BorderSide(
-    color: DeliveryColors.grey,
-    // width: 2,
-    style: BorderStyle.solid
-  )
+      dividerColor: DeliveryColors.veryLightGrey,
 
-);
+      textTheme: GoogleFonts.poppinsTextTheme().apply(
+        bodyColor: DeliveryColors.purple,
+        displayColor: DeliveryColors.purple,
+      ),
 
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: EdgeInsets.zero,
+        border: _borderLight,
+        enabledBorder: _borderLight,
+        focusedBorder: _borderLight,
+        labelStyle: TextStyle(color: DeliveryColors.purple),
+        hintStyle: GoogleFonts.poppins(
+          color: DeliveryColors.grey,
+          fontSize: 10
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: DeliveryColors.purple,
+      ),
 
+    );
 
-final lightTheme = ThemeData(
-  appBarTheme: AppBarTheme(
-    color: DeliveryColors.white,
-    titleTextStyle: GoogleFonts.poppinsTextTheme().titleLarge!.copyWith(
-      fontSize: 20,
-      color: DeliveryColors.purple,
-      fontWeight: FontWeight.bold
-    )
-  ),
+    final darkTheme = ThemeData(
+      appBarTheme: AppBarTheme(
+        color: DeliveryColors.purple,
+        titleTextStyle: GoogleFonts.poppins().copyWith(
+          fontSize: 20,
+          color: DeliveryColors.white,
+          fontWeight: FontWeight.bold
+        )
+      ),
+      dividerColor: Colors.transparent,
 
-  canvasColor: DeliveryColors.white,
-
-  dividerColor: DeliveryColors.veryLightGrey,
-
-  textTheme: GoogleFonts.poppinsTextTheme().apply(
-    bodyColor: DeliveryColors.purple,
-    displayColor: DeliveryColors.purple,
-  ),
-
-  inputDecorationTheme: InputDecorationTheme(
-    contentPadding: EdgeInsets.zero,
-    border: _borderLight,
-    enabledBorder: _borderLight,
-    focusedBorder: _borderLight,
-    labelStyle: TextStyle(color: DeliveryColors.purple),
-    hintStyle: GoogleFonts.poppins(
-      color: DeliveryColors.grey,
-      fontSize: 10
-    ),
-  ),
-  iconTheme: IconThemeData(
-    color: DeliveryColors.white,
-  ),
-
-);
-
-
-
-final darkTheme = ThemeData(
-  appBarTheme: AppBarTheme(
-    color: DeliveryColors.purple,
-    titleTextStyle: GoogleFonts.poppinsTextTheme().titleLarge!.copyWith(
-      fontSize: 20,
-      color: DeliveryColors.white,
-      fontWeight: FontWeight.bold
-    )
-  ),
-  dividerColor: Colors.transparent,
-
-  canvasColor: DeliveryColors.grey,
-  scaffoldBackgroundColor: DeliveryColors.dark,
-  textTheme: GoogleFonts.poppinsTextTheme().apply( bodyColor: DeliveryColors.green, displayColor: DeliveryColors.green ),
-  inputDecorationTheme: InputDecorationTheme(
-    contentPadding: EdgeInsets.zero,
-    filled: true,
-    fillColor: DeliveryColors.grey,
-    border: _borderDark,
-    enabledBorder: _borderDark,
-    focusedBorder: _borderDark,
-    labelStyle: TextStyle(color: DeliveryColors.white),
-    hintStyle: GoogleFonts.poppins( 
-      color: DeliveryColors.white,
-      fontSize: 10
-    ),
-  ),
-  iconTheme: IconThemeData(
-    color: DeliveryColors.white,
-  ),
-);
-
+      canvasColor: DeliveryColors.grey,
+      disabledColor: DeliveryColors.white,
+      scaffoldBackgroundColor: DeliveryColors.dark,
+      textTheme: GoogleFonts.poppinsTextTheme().apply( bodyColor: DeliveryColors.green, displayColor: DeliveryColors.green ),
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: EdgeInsets.zero,
+        filled: true,
+        fillColor: DeliveryColors.grey,
+        border: _borderDark,
+        enabledBorder: _borderDark,
+        focusedBorder: _borderDark,
+        labelStyle: TextStyle(color: DeliveryColors.white),
+        hintStyle: GoogleFonts.poppins( 
+          color: DeliveryColors.white,
+          fontSize: 10
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: DeliveryColors.white,
+      ),
+    );
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Delivery App',
-      theme: lightTheme,
+      theme: darkTheme,
       home: LoginScreen(),
     );
+
   }
 }

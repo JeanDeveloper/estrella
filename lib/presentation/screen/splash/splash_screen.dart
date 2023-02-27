@@ -21,13 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
-    
+
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -41,7 +37,6 @@ class _SplashScreenState extends State<SplashScreen> {
               DeliveryColors.purple
             ]
           )
-
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
