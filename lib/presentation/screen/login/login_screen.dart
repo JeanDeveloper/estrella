@@ -1,5 +1,6 @@
 import 'package:delivery/presentation/screen/home/home_screen.dart';
 import 'package:delivery/presentation/theme/theme.dart';
+import 'package:delivery/presentation/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,7 +21,6 @@ class LoginScreen extends StatelessWidget {
             flex: 2,
             child: Stack(
               children: [
-
                 Positioned(
                   bottom: 50,
                   left: -25,
@@ -124,43 +124,23 @@ class LoginScreen extends StatelessWidget {
 
           ),
 
+
+
+
           //BUTTON
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: InkWell(
-                onTap: () {
-          
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
+              child: DeliveryButton(
+                text: "Ingresar",
+                ontap: (){
+
+                  Navigator.of(context).pushReplacement( MaterialPageRoute(
                       builder: ( _ ) => HomeScreen(), 
-                    )
-                  );
-                },  
-                child: Container(
-                  alignment: Alignment.center,
-                  height: size.height * .001,
-          
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.centerRight,
-                      end: Alignment.centerLeft,
-                      colors: deliveryGradients,
-                    ),
-                    borderRadius: BorderRadius.circular(10)
-                  ),
-              
-                  child: const Padding(
-                    padding:  EdgeInsets.all(8.0),
-                    child: Text(
-                      "Ingresar", 
-                      style: TextStyle( color: Colors.white ),
-                        textAlign: TextAlign.center,
-                    ),
-                  ),
-          
-                ),
-              ),
+                  ));
+
+                },
+              )
             ),
           ),
 

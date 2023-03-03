@@ -1,15 +1,14 @@
 class Product {
-
-  final String name;
-  final String descipcion;
-  final double price;
-  final String image;
-
   Product({
     required this.name, 
-    required this.descipcion, 
+    required this.description, 
     required this.price, 
     required this.image
   });
-  
+
+  final String name;
+  final String description;
+  final double price;
+  final String image;
+
 }
