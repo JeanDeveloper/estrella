@@ -1,4 +1,4 @@
-import 'package:delivery/domain/models/product.dart';
+import 'package:delivery/domain/entities/product.dart';
 
 final products = [
 

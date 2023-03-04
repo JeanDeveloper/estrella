@@ -1,5 +1,5 @@
 import 'package:delivery/data/in_memory_products.dart';
-import 'package:delivery/domain/models/product.dart';
+import 'package:delivery/domain/entities/product.dart';
 import 'package:delivery/presentation/theme/theme.dart';
 import 'package:delivery/presentation/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';

@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                       borderRadius: const BorderRadius.vertical(
                         bottom: Radius.circular(200)
                       ),
-
+      
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -41,12 +41,12 @@ class LoginScreen extends StatelessWidget {
                           1.0
                         ]
                       ),
-
+      
                     ),
                     
                   )
                 ),
-
+      
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: CircleAvatar(
@@ -60,18 +60,18 @@ class LoginScreen extends StatelessWidget {
                     ) ,
                   )
                 )
-
+      
               ],
             )
-
+      
           ),
-          
+
           //FORM
           Expanded(
             flex: 4,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     SizedBox(height: size.height * .05),
@@ -86,7 +86,8 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       "Usuario",
                       style:Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                    
                       )
                     ),
                     SizedBox(height: size.height * .01),
@@ -121,24 +122,21 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-
+      
           ),
-
-
-
 
           //BUTTON
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: DeliveryButton(
                 text: "Ingresar",
                 ontap: (){
-
+      
                   Navigator.of(context).pushReplacement( MaterialPageRoute(
                       builder: ( _ ) => HomeScreen(), 
                   ));
-
+      
                 },
               )
             ),

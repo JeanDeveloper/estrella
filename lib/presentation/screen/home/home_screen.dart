@@ -1,5 +1,6 @@
 import 'package:delivery/presentation/screen/cart/cart_screen.dart';
 import 'package:delivery/presentation/screen/home/products/products_screen.dart';
+import 'package:delivery/presentation/screen/profile/profile_screen.dart';
 import 'package:delivery/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -33,9 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       _currentIndex = 0;
                     });
                   },
-                ),
+                ),  
                 Text("CurrentIdex4: ${_currentIndex}"),
-                Text("CurrentIdex5: ${_currentIndex}"),
+                ProfileScreen(),
               ],
 
             )
@@ -105,7 +106,7 @@ class _DeliveryNavigatorBar extends StatelessWidget {
 
                     icon: const Icon(Icons.shopping_basket),
                     onPressed: () => onIndexSelected(2), 
-              
+
                   ),
                 ),
               ),

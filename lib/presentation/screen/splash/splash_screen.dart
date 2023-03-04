@@ -1,9 +1,24 @@
-import 'package:delivery/presentation/screen/login/login_screen.dart';
+import 'package:delivery/domain/repository/Ilocal_storage_repository.dart';
+import 'package:delivery/domain/repository/iapi_repository.dart';
+import 'package:delivery/presentation/providers/splash_bloc.dart';
 import 'package:delivery/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
+
+  SplashScreen._();
+
+  static Widget init( BuildContext context ){
+    return ChangeNotifierProvider(
+      create: (_) => SplashBloc(
+        localRepository: context.read<ILocalRepository>(),
+        apiRepository: context.read<IApiRepository>(),
+      )..validateSesion(),
+      builder: ( _ , __ ) => SplashScreen._(),
+    );
+  }
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -11,14 +26,17 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-@override
+  void _init() async {
+    final bloc = context.read<SplashBloc>();
+    final result  = await  bloc.validateSesion();
+    print(result);
+  }
+
+  @override
   void initState() {
-
-    Future.delayed(const Duration(seconds: 5),   (){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ( _ ) => LoginScreen()));
+    WidgetsBinding.instance.addPostFrameCallback(( _ ) {
+      _init();
     });
-
-    super.initState();
   }
 
   @override
@@ -28,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -64,4 +82,5 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
+
 }

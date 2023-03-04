@@ -1,10 +1,15 @@
-import 'package:delivery/presentation/screen/login/login_screen.dart';
+import 'package:delivery/data/repository/api_repository.dart';
+import 'package:delivery/data/repository/local_storage_repository.dart';
+import 'package:delivery/domain/repository/iapi_repository.dart';
+import 'package:delivery/domain/repository/ilocal_storage_repository.dart';
 import 'package:delivery/presentation/screen/splash/splash_screen.dart';
 import 'package:delivery/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
   @override
@@ -42,6 +47,7 @@ class MyApp extends StatelessWidget {
 
       canvasColor: DeliveryColors.white,
       disabledColor: DeliveryColors.grey,
+      accentColor: DeliveryColors.purple,
 
       dividerColor: DeliveryColors.veryLightGrey,
 
@@ -77,6 +83,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       dividerColor: Colors.transparent,
+      accentColor: DeliveryColors.white,
 
       canvasColor: DeliveryColors.grey,
       disabledColor: DeliveryColors.white,
@@ -100,11 +107,26 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Delivery App',
-      theme: darkTheme,
-      home: LoginScreen(),
+    return MultiProvider(
+      providers: [
+
+        Provider<IApiRepository>(
+          create: (_) => ApiRepository(),
+        ),
+
+        Provider<ILocalRepository>(
+          create: (_) => LocalRepository(),
+        ),
+
+      ],
+
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Delivery App',
+        theme: lightTheme,
+        home: SplashScreen.init(context),
+      ),
+
     );
 
   }
